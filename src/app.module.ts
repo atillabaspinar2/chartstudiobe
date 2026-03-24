@@ -16,7 +16,7 @@ import { UsersModule } from './users/users.module';
         port: configService.get<number>('DATABASE_PORT', 5432),
         username: configService.get<string>('DATABASE_USERNAME', 'postgres'),
         password: configService.get<string>('DATABASE_PASSWORD', 'postgres'),
-        database: configService.get<string>('DATABASE_NAME', 'grapfio'),
+        database: configService.get<string>('DATABASE_NAME', 'chartstudiodb'),
         autoLoadEntities: true,
         synchronize: false,
       }),

@@ -1,6 +1,6 @@
-# Grapfio Backend
+# ChartStudio Backend
 
-NestJS backend for Grapfio authentication.
+NestJS backend for chartstudio authentication.
 
 Implemented features:
 
@@ -55,7 +55,7 @@ The backend connects to this container with these `.env` defaults:
 - `DATABASE_PORT=5432`
 - `DATABASE_USERNAME=postgres`
 - `DATABASE_PASSWORD=postgres`
-- `DATABASE_NAME=grapfio`
+- `DATABASE_NAME=smartchartsdb`
 
 If you run backend inside Docker later, set `DATABASE_HOST=postgres`.
 
