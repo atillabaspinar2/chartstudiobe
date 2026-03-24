@@ -2,6 +2,9 @@
 /dist
 /node_modules
 /build
+// .env files should be ignored, but the example file should be included
+.env.*
+
 
 # Logs
 logs

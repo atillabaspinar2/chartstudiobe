@@ -7,9 +7,9 @@
   "license": "UNLICENSED",
   "packageManager": "yarn@1.22.22",
   "scripts": {
-    "build": "nest build && yarn typeorm migration:run",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "build": "nest build",
     "start": "yarn migration:run:prod && nest start",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
