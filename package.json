@@ -7,9 +7,9 @@
   "license": "UNLICENSED",
   "packageManager": "yarn@1.22.22",
   "scripts": {
-    "build": "nest build",
+    "build": "nest build && yarn typeorm migration:run",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
+    "start": "yarn migration:run:prod && nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -23,7 +23,8 @@
     "migration:generate": "yarn typeorm migration:generate src/database/migrations/AutoMigration",
     "migration:create": "yarn typeorm migration:create src/database/migrations/ManualMigration",
     "migration:run": "yarn typeorm migration:run",
-    "migration:revert": "yarn typeorm migration:revert"
+    "migration:revert": "yarn typeorm migration:revert",
+    "migration:run:prod": "NODE_ENV=production yarn typeorm migration:run"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
