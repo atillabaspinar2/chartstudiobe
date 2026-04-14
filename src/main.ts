@@ -13,6 +13,17 @@ async function bootstrap() {
     origin: corsOrigins,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     credentials: true,
+    // MCP Streamable HTTP relies on these headers being readable by browsers.
+    exposedHeaders: ['Mcp-Session-Id', 'mcp-session-id'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'Mcp-Session-Id',
+      'mcp-session-id',
+      'Mcp-Protocol-Version',
+      'mcp-protocol-version',
+      'Last-Event-ID',
+    ],
   });
 
   app.useGlobalPipes(

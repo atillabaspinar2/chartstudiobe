@@ -11,8 +11,11 @@ export default new DataSource({
   database: process.env.DATABASE_NAME ?? 'postgres',
   entities: [User],
   migrations: ['src/database/migrations/*{.ts,.js}'],
-  ssl:
-    process.env.NODE_ENV === 'production'
-      ? { rejectUnauthorized: false }
-      : false,
+  // Only enable SSL when explicitly requested by env.
+  // (Some local/docker Postgres setups reject SSL, even in NODE_ENV=production.)
+  ssl: (() => {
+    const raw = (process.env.DATABASE_SSL ?? '').trim().toLowerCase();
+    const enabled = raw === '1' || raw === 'true' || raw === 'yes';
+    return enabled ? { rejectUnauthorized: false } : false;
+  })(),
 });

@@ -2,12 +2,16 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CronModule } from './cron/cron.module';
+import { McpModule } from './mcp/mcp.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      // Support local development conventions without requiring developers to rename files.
+      // Priority: .env.local (machine/dev secrets) → .env (shared defaults).
+      envFilePath: ['.env.local', '.env'],
     }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
@@ -23,6 +27,7 @@ import { UsersModule } from './users/users.module';
       }),
     }),
     CronModule,
+    McpModule,
     UsersModule,
   ],
 })

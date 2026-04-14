@@ -44,7 +44,10 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const passwordMatches = await compare(signinDto.password, user.passwordHash);
+    const passwordMatches = await compare(
+      signinDto.password,
+      user.passwordHash,
+    );
 
     if (!passwordMatches) {
       throw new UnauthorizedException('Invalid credentials');
